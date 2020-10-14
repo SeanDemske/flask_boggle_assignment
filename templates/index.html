@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block board %}
+    <div class="project-container">
+        <h2 id="instructions">Play!</h2>
+        <h3 id="timer"></h3>
+        <h4>Times Played: <span id="times-played-display">{{ times_played}}</span></h4>
+        <div id="high-score-display">Highscore: <span id="highscore-display">{{ highscore }}</span></div>
+        <div id="board-container">
+            {% for row in gameboard %}
+                <div class="row">
+                    {% for cell in row %}
+                        <div class="cell"><span>{{cell}}</span></div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <form id="guess-form" action="">
+            <label for="guess">Guess: </label><input id="guess-input" name="guess" type="text">
+            <button id="submit-btn">Submit Guess</button>
+        </form>
+        <div id="not-word-notification" class="warning" hidden>That is not a word! Try again</div>
+        <div id="not-on-board-notification" class="warning" hidden>That word is not on the board, try again</div>
+        <div id="scoreboard" hidden>
+            <h2>Scoreboard: </h2>
+            <ul id="scoreboard-list">
+                <!-- Words go here -->
+            </ul>
+            <h2>Total: <span id="total-score">0</span></h2>
+        </div>
+        <br>
+        <button hidden id="play-again-btn">Play Again</button>
+    </div>
+
+{% endblock %}
